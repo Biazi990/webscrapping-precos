@@ -1,0 +1,24 @@
+name: run ws.py
+
+on: 
+  schedule:
+    - cron: '*/5****'
+
+jobs:
+  run_schedule:
+    run-on: ubuntu-latest 
+    steps: 
+
+      - name: verifique os dados do repositorio
+        uses: actions/checkout@v3
+
+      - name: instalar python
+        uses: actions/setup-python@v4
+
+      - name: instalar os pacotes do requirements.txt
+        run: python -m pip install pip install -r requirements.txt
+
+      - name: execultar arquivo scrapping
+        env:
+          SENDGRID_API_KEY: $ {{secrets.SENGRID_API_KEY}}
+        run: python ws.py
