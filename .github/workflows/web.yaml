@@ -2,7 +2,7 @@ name: run ws.py
 
 on: 
   schedule:
-    - cron: '*/15 * * * * pwd >/dev/null 2>&1'
+    - cron: '*/15 * * * *' 
 
 jobs:
   run_schedule:
